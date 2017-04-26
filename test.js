@@ -23,11 +23,11 @@ tape('basic', function (t) {
 
   t.deepEquals(trie([
     'https://github.com/fiatjaf/url-trie',
-    'https://github.com/fiatjaf/module-linker',
+    {url: 'https://github.com/fiatjaf/module-linker'},
     'https://github.com/fiatjaf/module-linker/?x=y',
     '<direct>',
     'https://github.com/fiatjaf/module-linker?x=y',
-    'https://github.com/fiatjaf/module-linker/issues',
+    {url: 'https://github.com/fiatjaf/module-linker/issues', count: 3},
     'https://twitter.com/fiatjaf'
   ]), {
     '<direct>': {
@@ -35,21 +35,21 @@ tape('basic', function (t) {
       url: '<direct>'
     },
     'github.com': {
-      count: 5,
+      count: 7,
       next: {
         'github.com/fiatjaf': {
-          count: 5,
+          count: 7,
           next: {
             'github.com/fiatjaf/url-trie': {
               count: 1,
               url: 'https://github.com/fiatjaf/url-trie'
             },
             'github.com/fiatjaf/module-linker': {
-              count: 4,
+              count: 6,
               url: 'https://github.com/fiatjaf/module-linker',
               next: {
                 'github.com/fiatjaf/module-linker/issues': {
-                  count: 1,
+                  count: 3,
                   url: 'https://github.com/fiatjaf/module-linker/issues'
                 },
                 'github.com/fiatjaf/module-linker/?x=y': {
@@ -88,10 +88,10 @@ tape('skip', function (t) {
     'https://reddit.com/r/golang',
     'https://github.com/fiatjaf/module-linker/issues',
     'https://reddit.com/r/nim',
-    'https://twitter.com/fiatjaf?utm=slw',
+    {url: 'https://twitter.com/fiatjaf?utm=slw', count: 7},
     'https://reddit.com/r/golang/comments/2xxx6m/lua_52_vm_in_go/',
-    'https://github.com/fiatjaf',
-    'https://github.com/fiatjaf/url-trie',
+    {url: 'https://github.com/fiatjaf', count: 1},
+    {url: 'https://github.com/fiatjaf/url-trie'},
     'https://github.com/fiatjaf/module-linker'
   ], true), {
     'reddit.com/r': {
@@ -114,7 +114,7 @@ tape('skip', function (t) {
       }
     },
     'twitter.com/fiatjaf/?utm=slw': {
-      count: 1,
+      count: 7,
       url: 'https://twitter.com/fiatjaf?utm=slw'
     },
     'github.com/fiatjaf': {

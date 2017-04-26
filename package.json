@@ -1,6 +1,6 @@
 {
   "name": "url-trie",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "splits URLs into useful hierarchical pieces.",
   "main": "index.js",
   "scripts": {

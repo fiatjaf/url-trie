@@ -2,7 +2,8 @@ module.exports = function urltrie (urls, skipempty) {
   var res = {}
 
   for (var i = 0; i < urls.length; i++) {
-    var url = urls[i]
+    var url = urls[i].url || urls[i]
+    var count = urls[i].count || 1
 
     var parts
 
@@ -34,7 +35,7 @@ module.exports = function urltrie (urls, skipempty) {
       if (!current[id]) {
         current[id] = {count: 0}
       }
-      current[id].count++
+      current[id].count += count
 
       if (j === (parts.length - 1)) {
         // last part

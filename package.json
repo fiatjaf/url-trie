@@ -1,0 +1,30 @@
+{
+  "name": "url-trie",
+  "version": "1.0.0",
+  "description": "splits URLs into useful hierarchical pieces.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fiatjaf/url-trie.git"
+  },
+  "keywords": [
+    "trie",
+    "tree",
+    "http",
+    "href",
+    "pathname",
+    "path"
+  ],
+  "author": "Giovanni T. Parra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fiatjaf/url-trie/issues"
+  },
+  "homepage": "https://github.com/fiatjaf/url-trie#readme",
+  "devDependencies": {
+    "tape": "^4.6.3"
+  }
+}

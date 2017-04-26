@@ -24,26 +24,32 @@ tape('basic', function (t) {
   t.deepEquals(trie([
     'https://github.com/fiatjaf/url-trie',
     'https://github.com/fiatjaf/module-linker',
+    'https://github.com/fiatjaf/module-linker/?x=y',
+    'https://github.com/fiatjaf/module-linker?x=y',
     'https://github.com/fiatjaf/module-linker/issues',
     'https://twitter.com/fiatjaf'
   ]), {
     'github.com': {
-      count: 3,
+      count: 5,
       next: {
         'github.com/fiatjaf': {
-          count: 3,
+          count: 5,
           next: {
             'github.com/fiatjaf/url-trie': {
               count: 1,
               url: 'https://github.com/fiatjaf/url-trie'
             },
             'github.com/fiatjaf/module-linker': {
-              count: 2,
+              count: 4,
               url: 'https://github.com/fiatjaf/module-linker',
               next: {
                 'github.com/fiatjaf/module-linker/issues': {
                   count: 1,
                   url: 'https://github.com/fiatjaf/module-linker/issues'
+                },
+                'github.com/fiatjaf/module-linker/?x=y': {
+                  count: 2,
+                  url: 'https://github.com/fiatjaf/module-linker?x=y'
                 }
               }
             }
@@ -77,7 +83,7 @@ tape('skip', function (t) {
     'https://reddit.com/r/golang',
     'https://github.com/fiatjaf/module-linker/issues',
     'https://reddit.com/r/nim',
-    'https://twitter.com/fiatjaf',
+    'https://twitter.com/fiatjaf?utm=slw',
     'https://reddit.com/r/golang/comments/2xxx6m/lua_52_vm_in_go/',
     'https://github.com/fiatjaf',
     'https://github.com/fiatjaf/url-trie',
@@ -102,9 +108,9 @@ tape('skip', function (t) {
         }
       }
     },
-    'twitter.com/fiatjaf': {
+    'twitter.com/fiatjaf/?utm=slw': {
       count: 1,
-      url: 'https://twitter.com/fiatjaf'
+      url: 'https://twitter.com/fiatjaf?utm=slw'
     },
     'github.com/fiatjaf': {
       count: 4,

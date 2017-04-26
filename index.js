@@ -7,6 +7,16 @@ module.exports = function urltrie (urls, skipempty) {
       .slice(2)
       .filter(x => x.trim())
 
+    var last = parts.splice(-1)[0]
+    var pqs = last.split('?')
+    parts.push(pqs[0])
+    if (pqs.length > 1) {
+      var search = pqs.slice(1).join('?')
+      parts.push('?' + search)
+    }
+
+    parts = parts.filter(x => x.trim())
+
     var parentparts = []
     var current = res
     for (var j = 0; j < parts.length; j++) {

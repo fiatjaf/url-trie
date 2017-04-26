@@ -25,10 +25,15 @@ tape('basic', function (t) {
     'https://github.com/fiatjaf/url-trie',
     'https://github.com/fiatjaf/module-linker',
     'https://github.com/fiatjaf/module-linker/?x=y',
+    '<direct>',
     'https://github.com/fiatjaf/module-linker?x=y',
     'https://github.com/fiatjaf/module-linker/issues',
     'https://twitter.com/fiatjaf'
   ]), {
+    '<direct>': {
+      count: 1,
+      url: '<direct>'
+    },
     'github.com': {
       count: 5,
       next: {

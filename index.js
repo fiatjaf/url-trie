@@ -2,8 +2,8 @@ module.exports = function urltrie (urls, skipempty) {
   var res = {}
 
   for (var i = 0; i < urls.length; i++) {
-    var url = urls[i].url || urls[i]
-    var count = urls[i].count || 1
+    var url = typeof urls[i].url === 'string' ? urls[i].url : urls[i]
+    var amount = urls[i].amount || 1
 
     var parts
 
@@ -33,9 +33,9 @@ module.exports = function urltrie (urls, skipempty) {
       var id = partstohere.join('/')
 
       if (!current[id]) {
-        current[id] = {count: 0}
+        current[id] = {amount: 0}
       }
-      current[id].count += count
+      current[id].amount += amount
 
       if (j === (parts.length - 1)) {
         // last part

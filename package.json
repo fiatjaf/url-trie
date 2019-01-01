@@ -1,6 +1,6 @@
 {
   "name": "url-trie",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "splits URLs into useful hierarchical pieces.",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "pathname",
     "path"
   ],
-  "author": "Giovanni T. Parra",
+  "author": "fiatjaf",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fiatjaf/url-trie/issues"
